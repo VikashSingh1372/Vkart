@@ -1,0 +1,19 @@
+<html>
+<head>
+</head>
+<body>
+
+<div class="container row">
+<div class="col-md-3">
+<a th:href="@{/home}">
+<li>All Products</li></a>
+<a href="" th:each="c:${category}" th:href="@{/home/category/{id}(id=${c.categoryId})}"><li th:text="${c.categoryName}"></li></a> 
+</div>
+<div class="col-md-6">
+<div th:each="p:${product}"><li th:text="${p.productName}"></li> </div>
+</div> 
+
+</div>
+
+
+</body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeLeaf.org">
+<head>
+    
+    <title>Page Title</title>
+</head>
+<body>
+    <br><br>
+
+     <div class="container">
+         <div class="col-md-4 offset-md-4">
+
+             <div class="card" style="box-shadow: 3px 3px 10px 0px grey;">
+                 <div class="card-header text-center text-white ">
+                     <h3>Login</h3>
+                 </div>
+                 <div class="card-body">
+                    <form   th:action="@{/login}" method="POST">
+                    <div th:if="${param.error}" class="alert alert-danger">Invalid username and password</div>
+                    <div th:if="${param.logout}" class="alert alert-success">Logout Sucessfully</div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                       <div class="text-center">
+                        <button type="submit" class="btn primarybg text-white ">Login</button>
+                    </div><br>
+                    <div class="text-center">New User?<a th:href="@{/signup}"><small><br>Register Here</small></a></div>
+                      </form>
+                </div>
+
+        
+     </div></div>
+     </div>
+    
+</body>
+</html>

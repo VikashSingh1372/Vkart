@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org" th:replace="navbar::Layout(~{::section})">
+
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+	<section>
+		<form th:action="@{/admin/UpdatingCategory/{id} (id=${category.categoryId})}" method="POST" th:object="${category}">
+
+			<div class="container">
+			<input  name="categoryId" th:field="*{categoryId}">
+				<div class="form-group">
+					<label for="category">Category Name</label>
+					<input  name="categoryName" type="text" th:field="*{categoryName}" class="form-control" placeholder="Enter Name">
+					<small id="emailHelp" class="form-text text-muted">Enter a category for products</small>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Add here</button>
+			</div>
+		</form>
+
+	</section>
+</body>
+
+</html>

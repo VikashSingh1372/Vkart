@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeLeaf.org" th:replace="navbar::Layout(~{::section})">
+
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+	<section>
+		<table class="table">
+  <thead>
+    <tr>
+     
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="c : ${product}">
+     
+      <td th:text="${c.productName}">@mdo</td>
+            <td><a th:href="@{/admin/allProduct/delete/{id}(id=${c.productId})}">delete</a></td>
+                        <td><a th:href="@{/admin/allProduct/update/{id}(id=${c.productId})}">update</a></td>
+
+
+
+
+    </tr>
+     
+  </tbody>
+</table>
+
+	</section>
+</body>
+
+</html>

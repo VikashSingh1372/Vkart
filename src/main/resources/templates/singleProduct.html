@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeLeaf.org">
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<div class= "container">
+    <span th:each="p:${product}"> <li th:text ="${p.productName}">stp</li></span>
+</div>
+<div class= "container">
+<div><a th:each="p:${product}" th:href="@{/AddTocart/{id}(id=${p.productId})}" >Add to cart</li></a>
+
+</div>
+</div>
+
+
+</body>
+</html> 

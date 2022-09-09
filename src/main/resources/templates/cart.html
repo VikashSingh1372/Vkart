@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeLeaf.org">
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<div class= "container">
+    <span th:each="c:${cart}"> <li th:text ="${c.productName}">stp</li></span>
+    <a th:each="c:${cart}" th:href="@{/remove/{id}(id=${c.productId})}" >Remove</a>
+
+</div>
+
+
+</body>
+</html> 

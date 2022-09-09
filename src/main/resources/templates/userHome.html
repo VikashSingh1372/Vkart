@@ -1,0 +1,23 @@
+<html>
+<head>
+</head>
+<body>
+
+<div class="container row">
+  <li class="nav-item active">
+        <a class="nav-link" th:href="@{/logout}">LOGOUT</a>
+      </li>
+<span th:text="${user.userName}"></span> 
+<div class="col-md-3">
+<a th:href="@{/user/home}">
+<li>All Products</li></a>
+<a href="" th:each="c:${category}" th:href="@{/user/home/category/{id}(id=${c.categoryId})}"><li th:text="${c.categoryName}"></li></a> 
+</div>
+<div class="col-md-6">
+<div th:each="p:${product}"><li th:text="${p.productName}"></li> </div>
+</div> 
+
+</div>
+
+
+</body></html>
