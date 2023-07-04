@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class Config extends WebSecurityConfigurerAdapter {
+public class Config extends WebSecurityConfigurerAdapter{
 
 	@Bean
 	public UserDetailsService userdetailservice() {
@@ -46,7 +46,7 @@ public class Config extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/admin/**").hasAuthority("ADMIN")
 	    .antMatchers("/user/**").hasAuthority("USER")
-         .antMatchers("/**").permitAll().and().formLogin().loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/admin/home")
+         .antMatchers("/**").permitAll().and().formLogin().loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/user/home")
         .and().logout() .and().csrf().disable();
 		// login work has been finished
 

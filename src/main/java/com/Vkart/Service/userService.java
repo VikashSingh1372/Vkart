@@ -49,5 +49,10 @@ public class userService {
 		return userRepo.getuserByUserName(username);
 		
 	}
+	public Long userLength() {
+		long count = this.userRepo.count();
+		return count;
+		
+	}
 
 }

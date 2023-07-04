@@ -10,7 +10,10 @@ import com.Vkart.Models.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-	@Query("from Product as d where d.category.categoryId=:categoryId")
-	List<Product> findAllBycategory(@Param("categoryId") int categoryId);
+	@Query("from Product as d where d.category.categoryId=:catId")
+	List<Product> findAllByCategory(@Param("catId") int catId);
+	
+	
+	public List<Product> findByProductNameContaining(String keywords);
 
 }

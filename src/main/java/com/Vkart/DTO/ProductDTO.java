@@ -1,17 +1,29 @@
 package com.Vkart.DTO;
 
+import javax.persistence.Column;
+
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class ProductDTO {
 
 	private Long productId;
 	private String productName;
+	
 	private String productDescription;
 	private Double productWeight;
 	private Double productPrice;
-	private String productImage;
+	private  float productDiscount;
+	private Double realPrice;
+	
 	private int categoryid;
+	private String image;
 
 	public Long getProductId() {
 		return productId;
@@ -37,22 +49,7 @@ public class ProductDTO {
 	public void setProductWeight(Double productWeight) {
 		this.productWeight = productWeight;
 	}
-	public Double getProductPrice() {
-		return productPrice;
-	}
-	public void setProductPrice(Double productPrice) {
-		this.productPrice = productPrice;
-	}
-	public String getProductImage() {
-		return productImage;
-	}
-	public void setProductImage(String productImage) {
-		this.productImage = productImage;
-	}
-	public int getCategoryid() {
-		return categoryid;
-	}
-	public void setCategoryid(int categoryid) {
-		this.categoryid = categoryid;
-	}
+
+	
+
 }

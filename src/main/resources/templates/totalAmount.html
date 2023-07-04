@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' th:href="@{/Css/p.css}">
+	<script src='main.js'></script>
+</head>
+
+<body>
+<div th:replace ="userNavbar"></div>
+	<div class="col-md-6">
+		<img th:each="p:${product}" th:src="@{'/images/' + ${p.productImage}}" />
+		<div class="price"  th:each="p:${product}">
+			<h4><span  th:text="${p.productName}"></span></h4>
+			 <h3><span style="color: rgb(0, 0, 0);" th:text="${p.realPrice}"></span>
+								<br>
+									<s style="color: rgb(192, 192, 192) ;"> <span style="color: rgb(192, 192, 192);"
+											th:text="${p.productPrice}"></span>
+									</s> <span style="color: rgb(64, 128, 128);font-size: 18px;" th:text="${p.productDiscount +'%'}"></span>
+								</h6>
+			
+
+			<small>Inclusives of all taxes</small>
+			<h5>Free shipping</h5>
+		</div>
+		<div class="buttons"  th:each="p:${product}">
+		 <a  th:href="@{/user/checkout/{id}(id=${p.productId})}">Checkout</a>
+		</div>
+	</div>
+
+</body>
+
+</html>

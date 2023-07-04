@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeLeaf.org" th:replace="navbar::Layout(~{::section})">
+<html xmlns:th="http://www.thymeLeaf.org">
 
 <head>
 	<meta charset='utf-8'>
@@ -9,7 +9,10 @@
 </head>
 
 <body>
-	<section>
+<div th:replace="AdminHome"></div>
+<div class="content">
+   &nbsp;
+   
 		<table class="table">
   <thead>
     <tr>
@@ -30,7 +33,11 @@
   </tbody>
 </table>
 
-	</section>
+
+
+        </div>
+
+	
 </body>
 
 </html>

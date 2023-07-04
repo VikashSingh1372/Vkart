@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeLeaf.org" th:replace="navbar::Layout(~{::section})">
+<html xmlns:th="http://www.thymeLeaf.org">
 
 <head>
 	<meta charset='utf-8'>
@@ -10,22 +10,36 @@
 </head>
 
 <body>
-	<section>
-		<form th:action="@{/admin/SavingCategory}" method="POST" th:object="${category}">
+<div th:replace="AdminHome"></div>
+<div class="content border-box">
+   &nbsp;
+   
+		<form th:action="@{/admin/SavingCategory}" method="POST" th:object="${category}" enctype="multipart/form-data">
 
 			<div class="container">
-			<input  name="categoryId" th:field="*{categoryId}">
+			<h1>Add Category</h1>
+			<input  name="categoryId" style="display: none;" th:field="*{categoryId}">
 				<div class="form-group">
 					<label for="category">Category Name</label>
-					<input  name="categoryName" type="text" th:field="*{categoryName}" class="form-control" placeholder="Enter Name">
+					<input  name="categoryName" style="max-width: 300px;" type="text" th:field="*{categoryName}" class="form-control" placeholder="Enter Name">
 					<small id="emailHelp" class="form-text text-muted">Enter a category for products</small>
 				</div>
+				<div class="form-group">
+					<label for="category">Image</label>
+					<input type="file" th:name ="categoryImage">
+				</div>
+			
 
 				<button type="submit" class="btn btn-primary">Add here</button>
 			</div>
 		</form>
 
-	</section>
+
+
+        </div>
+
+
+	
 </body>
 
 </html>

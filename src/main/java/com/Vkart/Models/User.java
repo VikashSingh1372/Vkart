@@ -16,8 +16,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,8 +40,8 @@ public class User {
 	@Column(nullable = false)
 	private String userPassword;
 
-	@Column(nullable = false)
 	private String userGender;
+	
 	
 	private boolean isEnabled;
 
@@ -44,10 +52,14 @@ public class User {
 	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "userId"),
 	inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId"))
 	private List<Roles> roles = new ArrayList<>();
+	
 
 	
+	@OneToMany
+    private Set<Address> address = new HashSet<>();	
+	
 	public User(String userName, String userEmail, String userPassword, String userGender, boolean isEnabled,
-			List<Roles> roles) {
+		List<Roles> roles , Set<Address> address) {
 		super();
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -55,6 +67,7 @@ public class User {
 		this.userGender = userGender;
 		this.isEnabled = isEnabled;
 		this.roles = roles;
+		this.address = address;
 	}
 
 

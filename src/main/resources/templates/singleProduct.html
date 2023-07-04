@@ -1,19 +1,51 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeLeaf.org">
+<html xmlns:th="http://www.thymeLeaf.org">
+
 <head>
-<title>Page Title</title>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' th:href="@{/Css/p.css}">
 </head>
+
 <body>
+<div th:replace ="Navbar"></div>
+	<div class="header">
+		<img th:each="p:${product}" th:src="@{'/image/' + ${p.productImage}}" />
+		<div class="price"  th:each="p:${product}">
+			<h5><span  th:text="${p.productName}"></span></h5>
+			 <h4><span style="color: rgb(0, 0, 0);" th:text="${p.realPrice}"></span>
+								<br>
+									<s style="color: rgb(192, 192, 192) ;"> <span style="color: rgb(192, 192, 192);"
+											th:text="${p.productPrice}"></span>
+									</s> <span style="color: rgb(64, 128, 128);font-size: 18px;" th:text="${p.productDiscount +'%'}"></span>
+								</h6>
+			
 
-<div class= "container">
-    <span th:each="p:${product}"> <li th:text ="${p.productName}">stp</li></span>
-</div>
-<div class= "container">
-<div><a th:each="p:${product}" th:href="@{/AddTocart/{id}(id=${p.productId})}" >Add to cart</li></a>
+			<small>Inclusives of all taxes</small>
+			<h5>Free shipping</h5>
+		</div>
+		<div class="productDetails" th:each="p:${product}">
+			<h5>Product Details</h5>
+			<p> Product Id: <span th:text="${p.productId}"> 828539853</span></p>
+			<span th:text="${p.productDescription}"> 828539853</span>
 
-</div>
-</div>
 
+
+
+
+
+
+
+		</div>
+		<div class="buttons"  th:each="p:${product}">
+			               <a  th:href="@{/user/buy/{id}(id=${p.productId})}"> Buy Now</a >
+			<a  th:each="p:${product}" type="button" th:href="@{/user/AddTocart/{id}(id=${p.productId})}">Add to cart</li></a>
+
+		</div>
+	</div>
 
 </body>
-</html> 
+
+</html>

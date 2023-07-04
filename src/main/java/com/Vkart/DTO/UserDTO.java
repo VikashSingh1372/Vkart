@@ -1,6 +1,10 @@
  package com.Vkart.DTO;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class UserDTO {
 	private int userId;
 
@@ -13,9 +17,8 @@ public class UserDTO {
 	private String userGender;
 	
 	private String role;
-
 	
-	public UserDTO() {
+ public UserDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeLeaf.org" th:replace="navbar::Layout(~{::section})">
+<html xmlns:th="http://www.thymeLeaf.org" >
 
 <head>
 	<meta charset='utf-8'>
@@ -10,48 +10,68 @@
 </head>
 
 <body>
-	<section>
-		<form th:action="@{/admin/SavingProduct}" method="POST" th:object="${product}">
-		<input type="text" th:field="*{productId}">
+<div th:replace="AdminHome"></div>
+<div class="content">
+<div class="" style="max-width: 500px;">
+			<h1>Add Product</h1>
+
+   
+	<form th:action="@{/admin/SavingProduct}" method="POST" th:object="${product}" enctype="multipart/form-data">
 			<div class="container">
+					<input type="text" style="display: none;" th:field="*{productId}">
+
 				<div class="form-group">
 					<label for="category">Product Name</label>
 					<input name="productName" type="text" th:field="*{productName}" class="form-control"
-						placeholder="Enter Name">
-					<small id="emailHelp" class="form-text text-muted">Enter a category for products</small>
+						placeholder="Enter name">
 				</div>
 
 				<div class="form-group">
 					<label for="category">Product price</label>
-					<input name="productPrice" type="text" th:field="*{productPrice}" class="form-control"
-						placeholder="Enter Name">
-					<small id="emailHelp" class="form-text text-muted">Enter a category for products</small> 
+					<input name="productPrice" type="number" th:field="*{productPrice}" class="form-control"
+						placeholder="Enter price">
 				</div>
 				<div class="form-group">
-					<label for="category">Description</label>
-					<input name="productDescription" type="text" th:field="*{productDescription}" class="form-control"
-						placeholder="Enter Name">
-					<small id="emailHelp" class="form-text text-muted">Enter a category for products</small>
+					<label for="category">Product discount</label>
+					<input name="productDiscount" type="number" th:field="*{productDiscount}" class="form-control"
+						placeholder="Enter %">
 				</div>
+			
 				<div class="form-group">
 					<label for="category">Weight</label>
-					<input name="productWeight" type="text" th:field="*{productWeight}" class="form-control"
-						placeholder="Enter Name">
-					<small id="emailHelp" class="form-text text-muted">Enter a category for products</small>
+					<input name="productWeight" type="number" th:field="*{productWeight}" class="form-control"
+						placeholder="Enter weight">
 				</div>
 				<div class="form-group">
+									<small id="emailHelp" class="form-text text-muted">Enter a category for products</small>
+
+				
 					<label for="category">Category</label>
 					<select class="form-control" th:field="*{categoryid}" >
 						<option th:each="c :${category}"	th:value="${c.categoryId}"	th:text="${c.categoryName}"></option>
 					</select>
 				</div>
+					<div class="form-group">
+					<label for="category">Description</label>
+					<textarea name="productDescription" style="min-height: 300px;" type="text" th:field="*{productDescription}" class="form-control"
+						placeholder="Enter description"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="product">Image</label>
+					<input type="file" th:name ="productImage"  >
+				</div>
+			
+
 
 
 				<button type="submit" class="btn btn-primary">Add here</button>
 			</div>
 		</form>
 
-	</section>
+
+</div>
+        </div>
+
 </body>
 
 </html>

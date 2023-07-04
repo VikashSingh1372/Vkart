@@ -1,19 +1,200 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+
 <head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+		integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+	<link rel="stylesheet" th:href="@{/Css/nav.css}">
+	<script th:src="@{/Js/main.js}"></script>
+
 </head>
+
 <body>
-
-<div class="container row">
-<div class="col-md-3">
-<a th:href="@{/home}">
-<li>All Products</li></a>
-<a href="" th:each="c:${category}" th:href="@{/home/category/{id}(id=${c.categoryId})}"><li th:text="${c.categoryName}"></li></a> 
-</div>
-<div class="col-md-6">
-<div th:each="p:${product}"><li th:text="${p.productName}"></li> </div>
-</div> 
-
-</div>
+	<header>
 
 
-</body></html>
+
+		<div class="nav">
+			<div class="logo">
+				<h1><i class="fa-brands fa-vk"></i>Vkart</h1>
+			</div>
+			<div class="element content">
+				<ul>
+					<li>
+						<a href="" th:href="@{/home/productsById}">All products</a>
+
+
+					</li>
+					<li><a th:href="@{/user/cart}">Cart</a></li>
+		
+					<li><a th:href="@{/login}">Login</a></li>
+				</ul>
+			</div>
+
+			<div class="menu">
+				<i onclick="ham()" class="fa-solid fa-bars toggle"> </i>
+
+			</div>
+
+		</div>
+		
+
+
+	<div class="search container my-4">
+		<input onkeyup ="search()" id="search-input" type="text" class="form-control" placeholder="Search"/>
+		<div class ="search-result">
+		</div></div>
+
+
+		<div class="category">
+			<div class="image" th:each="c:${category}">
+				<a style="text-decoration: none;" th:href="@{/home/category/{id}(id=${c.categoryId})}"><img
+						th:src="@{'/image/' + ${c.categoryImage}}" />
+					<h3 th:text="${c.categoryName}"></h3>
+				</a>
+
+
+			</div>
+
+		</div>
+		<div class="banner">
+			<div class="banner-text">
+				<h1>ALL COLLECTION</h1>
+				<p>Latest collection of all products</p>
+				<button>Shop Now</button>
+
+			</div>
+
+		</div>
+		<br>
+		<div class="why">
+			<h1>Why Shop With Us ?</h1>
+		</div>
+		<div class="cards">
+			<div class="box"><i class="fa-solid fa-truck"></i><br>
+				<h2>Free Delivery</h2>
+				<p>
+					We provide our customers free delivery on products over price 500.
+				</p>
+			</div>
+			<div class="box"><i class="fa-solid fa-bus"></i><br>
+				<h2>Free Shipping</h2>
+				<p>
+					Shipping charges are never included with base prices or in the form of additional fee.
+				</p>
+			</div>
+			<div class="box"><i class="fa-solid fa-award"></i><br>
+				<h2>Best Quality</h2>
+				<p>
+					Customers are assets of our organisation So we provide quality aproved and branded items.
+				</p>
+			</div>
+
+
+		</div>
+		<h2 style="text-align: center;">Popular items</h2>
+
+		<div class="popular">
+			<br>
+
+
+			<div class="box2" th:each="p:${popular}">
+				<a style="text-decoration: none;" th:href="@{/home/product/{id}(id=${p.productId})}"><img
+						th:src="@{'/image/' + ${p.image}}" />
+					<h3 style="color: black;" th:text="${p.name}"></h3>
+					<div class="row">
+						<h4><span style="color: rgb(0, 0, 0);" th:text="${p.realPrice}"></span><br>
+							<s style="color: rgb(192, 192, 192) ;"> <span style="color: rgb(192, 192, 192);"
+									th:text="${p.price}"></span></s> <span style="color: rgb(64, 128, 128);"
+								th:text="${p.discount +'%'}"></span>
+						</h4>
+
+
+					</div>
+
+
+				</a>
+			</div>
+
+
+
+		</div>
+
+		<div class="policy">
+			<div class="card1" style="background-color: #75acec;"><i class="fa-sharp fa-solid fa-rotate"></i><br>
+				<h3>30 Days return</h3>
+			</div>
+			<div class="card1" style="background-color: #dbe980;"><i class="fa-sharp fa-solid fa-truck-fast"></i><br>
+				<h3>Free Shipping</h3>
+			</div>
+			<div class="card1" style="background-color: #f3ca6f;"><i class="fa-sharp fa-solid fa-lock"></i><br>
+				<h3>Secure Payment</h3>
+			</div>
+			<div class="card1" style="background-color: #89e2b9;"><i class="fa-sharp fa-solid fa-gift"></i><br>
+				<h3>New Products</h3>
+			</div>
+
+		</div>
+		<footer class="footer">
+
+			<div class="footer-col">
+				<h4>company</h4>
+
+				<a href="#">about us</a><br>
+				<a href="#">our services</a><br>
+				<a href="#">privacy policy</a><br>
+				<a href="#">affiliate program</a><br>
+
+			</div>
+			<div class="footer-col">
+				<h4>get help</h4>
+				<a href="#">FAQ</a><br>
+				<a href="#">shipping</a><br>
+				<a href="#">returns</a><br>
+				<a href="#">order status</a><br>
+				<a href="#">payment options</a><br>
+
+			</div>
+			<div class="footer-col">
+				<h4>online shop</h4>
+				<div>
+
+					<a href="#">watch</a><br>
+					<a href="#">bag</a><br>
+					<a href="#">shoes</a><br>
+					<a href="#">dress</a><br>
+
+				</div>
+
+			</div>
+			<div class="footer-col">
+				<h4>follow us</h4>
+				<div class="social-links">
+					<a href="#"><i class="fab fa-facebook-f"></i></a>
+					<a href="#"><i class="fab fa-twitter"></i></a>
+					<a href="#"><i class="fab fa-instagram"></i></a>
+					<a href="#"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+			</div>
+
+		</footer>
+
+	</header>
+
+
+
+
+
+
+	<script src="//code.jquery.com/jquery.min.js"></script>
+
+</body>
+
+</html>

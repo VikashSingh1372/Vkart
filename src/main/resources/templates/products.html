@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeLeaf.org">
+<head>
+
+    
+    <title>Page Title</title>
+   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+   	    <link rel='stylesheet' type='text/css' media='screen' th:href="@{/Css/product.css}">
+
+
+</head>
+<body>
+    <div th:replace="Navbar"></div>
+    <br><br>
+    <h2 style="text-align: center;" th:text="${category.categoryName}">names</h2>
+
+		<div class="popular">
+			<br>
+
+	
+			<div class="box2" style="padding-top: 15px ;" th:each="p:${product}">
+				<a style="text-decoration: none; color: black;" th:href="@{/home/product/{id}(id=${p.productId})}"><img style="width: 160px;height: 160px;" th:src="@{'/image/' + ${p.productImage}}"/>
+					<p   th:text="${p.productName}"></p>
+					 <h6><span style="color: rgb(0, 0, 0);" th:text="${p.realPrice}"></span>
+								<br>
+									<s style="color: rgb(192, 192, 192) ;"> <span style="color: rgb(192, 192, 192);"
+											th:text="${p.productPrice}"></span>
+									</s> <span style="color: rgb(64, 128, 128);font-size: 16px;" th:text="${p.productDiscount +'%'}"></span>
+								</h6>
+				</a>
+			</div>
+</div> 
+			
+
+
+		</div>
+
+
+    
+    
+</body>
+</html>

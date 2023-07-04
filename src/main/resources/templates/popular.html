@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeLeaf.org">
+
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+<div th:replace="AdminHome"></div>
+<div class="content">
+   &nbsp;
+   
+		<table class="table">
+  <thead>
+    <tr>
+     
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="p : ${popular}">
+     
+      <td th:text="${p.name}">@mdo</td>
+            <td><a th:href="@{/admin/popular/delete/{id}(id=${p.id})}">delete</a></td>
+
+
+    </tr>
+     
+  </tbody>
+</table>
+
+
+
+        </div>
+
+	
+</body>
+
+</html>

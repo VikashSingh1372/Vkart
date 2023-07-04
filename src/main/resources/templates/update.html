@@ -45,6 +45,10 @@
 						<option th:each="c :${category}"	th:value="${c.categoryId}"	th:text="${c.categoryName}"></option>
 					</select>
 				</div>
+					<div class="form-group">
+					<label for="product">Image</label>
+					<input type="file" th:value="${p.productImage}" th:name ="productImage"  >
+				</div>
 
 
 				<button type="submit" class="btn btn-primary">Add here</button>

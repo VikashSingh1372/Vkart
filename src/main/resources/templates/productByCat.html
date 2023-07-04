@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' th:href="@{/Css/product.css}">
+	    <link rel="stylesheet" th:href="@{/Css/sidebar.css}">
+	        <script th:src="@{/Js/main.js}"></script>
+</head>
+
+<body>
+	<div th:replace="Navbar"></div>
+
+
+	 <div class="sidebar" style="background-color:black;">
+          <span onclick="toogleSidebar()" class="crossbtn">&times;</span>
+          
+            <a href="" th:href="@{/admin/data}"><i class="fa-solid fa-house"></i> &nbsp;Home</a>
+            <a style="text-decoration: none; color: grey;" th:href="@{/home/productsById}">All Product </a>
+			
+
+				<a style="text-decoration: none;" href="" th:each="c:${category}"
+					th:href="@{/home/productId/{id}(id=${c.categoryId})}">
+					<li th:text="${c.categoryName}"></li>
+				</a>
+			
+
+
+
+
+
+            
+        </div>
+
+        <div class="content">
+                   &nbsp;
+          <i onclick="toogleSidebar()"  class="fa-solid fa-bars toggle menu m"></i>
+
+
+
+
+
+
+
+				<div class="products">
+					<div class="box2" th:each="p: ${product}">
+						<a style="text-decoration: none;" th:href="@{/home/product/{id}(id=${p.productId})}"><img
+								th:src="@{'/image/' + ${p.productImage}}" />
+							<h6 th:text="${p.productName}" style="color:black; text-decoration: none;"></h6>
+							
+								<h5>  <span style="color: rgb(0, 0, 0);" th:text="${p.realPrice}"></span>
+								<br>
+									<s style="color: rgb(192, 192, 192) ;"> <span style="color: rgb(192, 192, 192);"
+											th:text="${p.productPrice}"></span>
+									</s> <span style="color: rgb(64, 128, 128);font-size: 16px;" th:text="${p.productDiscount}"></span>
+								</h5>
+
+
+							
+						</a>
+					</div>
+
+				</div>
+
+
+		
+
+        </div>
+
+	
+	
+	
+	
+
+	
+		
+
+</body>
+
+</html>

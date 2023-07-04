@@ -11,6 +11,7 @@ import com.Vkart.Repositories.ProductRepository;
 
 @Service
 public class ProductService {
+	
 	@Autowired
 	ProductRepository productRepo;
 	
@@ -26,15 +27,21 @@ public class ProductService {
 		productRepo.deleteById(id);
 		
 	}
-	public Optional<Product> getProductById(Long id){
+	public Product getProductById(Long id){
 		
-		return 		productRepo.findById(id);
+		return 		productRepo.findById(id).get();
 		
 	}
-	public List<Product> getAllProductsBycategory(int id)
+	public List<Product> getAllProductsByCategory(int id)
 	{
-		return productRepo.findAllBycategory(id);
+		return productRepo.findAllByCategory(id);
 		
 	
 	}
+	public Long productLength() {
+		long count = this.productRepo.count();
+		return count;
+		
+	}
+	
 }

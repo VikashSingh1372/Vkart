@@ -1,16 +1,38 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeLeaf.org">
+<html lang="en"  xmlns:th="http://www.thymeLeaf.org">
 <head>
-<title>Page Title</title>
+
+    
+    <title>Page Title</title>
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
 </head>
 <body>
+    <div th:replace="userNavbar"></div>
+    <br><br>
 
-<div class= "container">
+
+     <div class="container">
+         <div class="col-md-4 offset-md-4">
+
+             <div class="card" style="box-shadow: 3px 3px 10px 0px grey;">
+                 <div class="card-header text-center">
+                     <h3>Items</h3>
+                 </div>
+                 <div class="card-body">
+                 <div class= "container">
     <span th:each="c:${cart}"> <li th:text ="${c.productName}">stp</li></span>
-    <a th:each="c:${cart}" th:href="@{/remove/{id}(id=${c.productId})}" >Remove</a>
+    <a th:each="c:${cart}" th:href="@{/user/remove/{id}(id=${c.productId})}" >Remove</a>
 
 </div>
+                 
+                </div>
 
-
+        
+     </div></div>
+     </div>
+    
 </body>
-</html> 
+</html>
+
+

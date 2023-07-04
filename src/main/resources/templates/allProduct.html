@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeLeaf.org" th:replace="navbar::Layout(~{::section})">
+<html xmlns:th="http://www.thymeLeaf.org">
 
 <head>
 	<meta charset='utf-8'>
@@ -9,8 +9,11 @@
 </head>
 
 <body>
-	<section>
-		<table class="table">
+
+<div th:replace="AdminHome"></div>
+<div class="content">
+   &nbsp;
+   <table class="table">
   <thead>
     <tr>
      
@@ -23,6 +26,9 @@
       <td th:text="${c.productName}">@mdo</td>
             <td><a th:href="@{/admin/allProduct/delete/{id}(id=${c.productId})}">delete</a></td>
                         <td><a th:href="@{/admin/allProduct/update/{id}(id=${c.productId})}">update</a></td>
+                                                <td><a th:href="@{/admin/allProduct/update/{id}(id=${c.productId})}">update</a></td>
+                        <td><a th:href="@{/admin/allProduct/popular/{id}(id=${c.productId})}">Add To Popular Item</a></td>
+
 
 
 
@@ -32,7 +38,10 @@
   </tbody>
 </table>
 
-	</section>
+
+
+        </div>
+	
 </body>
 
 </html>

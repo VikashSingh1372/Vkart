@@ -31,12 +31,13 @@ public class CategoryService {
 		return catRepo.getById(id);
     	
     }
-	
-
-	public void AddCategory(Category category) {
-		catRepo.save(category);
-
+    public Long categoryLength() {
+		long count = this.catRepo.count();
+		return count;
 		
 	}
+	
+
+
 
 }
